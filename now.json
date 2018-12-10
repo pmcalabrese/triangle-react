@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "alias": ["tstc.now.sh"],
+    "builds": [
+      { "src": "./build/**", "use": "@now/static"}
+    ],
+    "routes": [
+        { "src": "^/", "dest": "/build/index.html" },
+        { "src": "^/favicon.ico", "dest": "/build/favicon.ico" },
+        { "src": "^/static/(.*)", "dest": "/build/static/$1" }
+      ]
+  }
