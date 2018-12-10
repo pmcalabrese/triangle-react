@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { mount } from 'enzyme';
+import { mount } from "enzyme";
 
 describe("Message", () => {
   let mountedApp;
@@ -35,48 +35,48 @@ describe("Message", () => {
 
   it("renders a disabled submit button on start", () => {
     const button = app().find("button[type='submit']");
-    expect(button.exists('[disabled]')).toEqual(true);
-  })
+    expect(button.exists("[disabled]")).toEqual(true);
+  });
 
   it("does not render a result info or error message on start", () => {
     const button = app().find("dl");
     expect(button.length).toBe(0);
-  })
+  });
 
   // check the inital state
 
   it("renders without input side A errors on start", () => {
     expect(app().state().side_a_has_errors).toBe(false);
-  })
+  });
 
   it("renders without input side B errors on start", () => {
     expect(app().state().side_b_has_errors).toBe(false);
-  })
+  });
 
   it("renders without input side C errors on start", () => {
     expect(app().state().side_c_has_errors).toBe(false);
-  })
+  });
 
   it("renders without input side C errors on start", () => {
     expect(app().state().side_c_has_errors).toBe(false);
-  })
+  });
 
   it("renders with the form_valid set to false", () => {
     expect(app().state().form_valid).toBe(false);
-  })
+  });
 
   it("sides is an empty array on start", () => {
     expect(app().state().sides.length).toBe(0);
-  })
+  });
 
   it("results is an empty string on start", () => {
     expect(app().state().result).toBe("");
-  })
+  });
 
   it("results is an empty string on start", () => {
     expect(app().state().error_message).toBe("");
-  })
-  
+  });
+
   it("renders a enabled submit button if all the 3 inputs are valid", () => {
     const input_a = app().find("input[name='side_a']");
     const input_b = app().find("input[name='side_b']");
@@ -84,12 +84,12 @@ describe("Message", () => {
     input_a.instance().value = "3";
     input_b.instance().value = "3";
     input_c.instance().value = "3";
-    input_a.simulate('change');
-    input_b.simulate('change');
-    input_c.simulate('change');
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
     const button = app().find("button[type='submit']");
-    expect(button.prop("disabled")).toEqual(false)
-  })
+    expect(button.prop("disabled")).toEqual(false);
+  });
 
   it("renders a disabled submit button if the sida A input is negative number", () => {
     const input_a = app().find("input[name='side_a']");
@@ -98,12 +98,12 @@ describe("Message", () => {
     input_a.instance().value = "-3";
     input_b.instance().value = "3";
     input_c.instance().value = "3";
-    input_a.simulate('change');
-    input_b.simulate('change');
-    input_c.simulate('change');
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
     const button = app().find("button[type='submit']");
-    expect(button.prop("disabled")).toEqual(true)
-  })
+    expect(button.prop("disabled")).toEqual(true);
+  });
 
   it("renders a disabled submit button if the sida B input is negative number", () => {
     const input_a = app().find("input[name='side_a']");
@@ -112,12 +112,12 @@ describe("Message", () => {
     input_a.instance().value = "3";
     input_b.instance().value = "-3";
     input_c.instance().value = "3";
-    input_a.simulate('change');
-    input_b.simulate('change');
-    input_c.simulate('change');
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
     const button = app().find("button[type='submit']");
-    expect(button.prop("disabled")).toEqual(true)
-  })
+    expect(button.prop("disabled")).toEqual(true);
+  });
 
   it("renders a disabled submit button if the sida C input is negative number", () => {
     const input_a = app().find("input[name='side_a']");
@@ -126,12 +126,12 @@ describe("Message", () => {
     input_a.instance().value = "3";
     input_b.instance().value = "3";
     input_c.instance().value = "-3";
-    input_a.simulate('change');
-    input_b.simulate('change');
-    input_c.simulate('change');
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
     const button = app().find("button[type='submit']");
-    expect(button.prop("disabled")).toEqual(true)
-  })
+    expect(button.prop("disabled")).toEqual(true);
+  });
 
   it("renders a disabled submit button if the sida A input is zero", () => {
     const input_a = app().find("input[name='side_a']");
@@ -140,12 +140,12 @@ describe("Message", () => {
     input_a.instance().value = "0";
     input_b.instance().value = "3";
     input_c.instance().value = "3";
-    input_a.simulate('change');
-    input_b.simulate('change');
-    input_c.simulate('change');
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
     const button = app().find("button[type='submit']");
-    expect(button.prop("disabled")).toEqual(true)
-  })
+    expect(button.prop("disabled")).toEqual(true);
+  });
 
   it("renders a disabled submit button if the sida B input is zero", () => {
     const input_a = app().find("input[name='side_a']");
@@ -154,12 +154,12 @@ describe("Message", () => {
     input_a.instance().value = "3";
     input_b.instance().value = "0";
     input_c.instance().value = "3";
-    input_a.simulate('change');
-    input_b.simulate('change');
-    input_c.simulate('change');
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
     const button = app().find("button[type='submit']");
-    expect(button.prop("disabled")).toEqual(true)
-  })
+    expect(button.prop("disabled")).toEqual(true);
+  });
 
   it("renders a disabled submit button if the sida C input is zero", () => {
     const input_a = app().find("input[name='side_a']");
@@ -168,32 +168,139 @@ describe("Message", () => {
     input_a.instance().value = "3";
     input_b.instance().value = "3";
     input_c.instance().value = "0";
-    input_a.simulate('change');
-    input_b.simulate('change');
-    input_c.simulate('change');
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
     const button = app().find("button[type='submit']");
-    expect(button.prop("disabled")).toEqual(true)
-  })
+    expect(button.prop("disabled")).toEqual(true);
+  });
 
   it("renders input A with a `ts-error` class", () => {
     const input_a = app().find("input[name='side_a']");
     input_a.instance().value = "0";
-    input_a.simulate('change');
-    expect(input_a.hasClass("ts-error"))
-  })
+    input_a.simulate("change");
+    expect(input_a.hasClass("ts-error"));
+  });
 
   it("renders input B with a `ts-error` class", () => {
     const input_b = app().find("input[name='side_b']");
     input_b.instance().value = "0";
-    input_b.simulate('change');
-    expect(input_b.hasClass("ts-error"))
-  })
+    input_b.simulate("change");
+    expect(input_b.hasClass("ts-error"));
+  });
 
   it("renders input C with a `ts-error` class", () => {
     const input_c = app().find("input[name='side_c']");
     input_c.instance().value = "0";
-    input_c.simulate('change');
-    expect(input_c.hasClass("ts-error"))
-  })
+    input_c.simulate("change");
+    expect(input_c.hasClass("ts-error"));
+  });
+
+  it("sets a postive result on the state if the inputs are valid", () => {
+    const input_a = app().find("input[name='side_a']");
+    const input_b = app().find("input[name='side_b']");
+    const input_c = app().find("input[name='side_c']");
+    input_a.instance().value = "3";
+    input_b.instance().value = "3";
+    input_c.instance().value = "3";
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
+    const form = app().find("form");
+    form.simulate("submit");
+    expect(app().state().result).toBe("equilateral")
+  });
+
+  it("sets an empty error_message on the state if the inputs are valid", () => {
+    const input_a = app().find("input[name='side_a']");
+    const input_b = app().find("input[name='side_b']");
+    const input_c = app().find("input[name='side_c']");
+    input_a.instance().value = "3";
+    input_b.instance().value = "3";
+    input_c.instance().value = "3";
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
+    const form = app().find("form");
+    form.simulate("submit");
+    expect(app().state().error_message).toBe("")
+  });
+
+  it("sets a sidest on the state if the inputs are valid", () => {
+    const input_a = app().find("input[name='side_a']");
+    const input_b = app().find("input[name='side_b']");
+    const input_c = app().find("input[name='side_c']");
+    input_a.instance().value = "3";
+    input_b.instance().value = "3";
+    input_c.instance().value = "3";
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
+    const form = app().find("form");
+    form.simulate("submit");
+    expect(app().state().sides).toEqual([3,3,3])
+  });
+
+  it("sets a not valid triagle error_message if the inputs are not from a valid triangle", () => {
+    const input_a = app().find("input[name='side_a']");
+    const input_b = app().find("input[name='side_b']");
+    const input_c = app().find("input[name='side_c']");
+    input_a.instance().value = "100";
+    input_b.instance().value = "3";
+    input_c.instance().value = "3";
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
+    const form = app().find("form");
+    form.simulate("submit");
+    expect(app().state().error_message).toBe("100, 3, 3 Is not a valid triangle")
+    expect(app().state().result).toBe("")
+  });
+
+  it("sets a inputs are not valid message if the inputs are not from a valid triangle", () => {
+    const input_a = app().find("input[name='side_a']");
+    const input_b = app().find("input[name='side_b']");
+    const input_c = app().find("input[name='side_c']");
+    input_a.instance().value = "-3";
+    input_b.instance().value = "3";
+    input_c.instance().value = "3";
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
+    const form = app().find("form");
+    form.simulate("submit");
+    expect(app().state().error_message).toBe("Inputs are not valid")
+    expect(app().state().result).toBe("")
+  });
+
+  it("renders a error message component on the state if the inputs are not valid", () => {
+    const input_a = app().find("input[name='side_a']");
+    const input_b = app().find("input[name='side_b']");
+    const input_c = app().find("input[name='side_c']");
+    input_a.instance().value = "100";
+    input_b.instance().value = "3";
+    input_c.instance().value = "3";
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
+    const form = app().find("form");
+    form.simulate("submit");
+    expect(app().exists('dl.ts-errors')).toEqual(true)
+  });
+
+  it("renders a info message on the state if the inputs are valid", () => {
+    const input_a = app().find("input[name='side_a']");
+    const input_b = app().find("input[name='side_b']");
+    const input_c = app().find("input[name='side_c']");
+    input_a.instance().value = "5";
+    input_b.instance().value = "5";
+    input_c.instance().value = "5";
+    input_a.simulate("change");
+    input_b.simulate("change");
+    input_c.simulate("change");
+    const form = app().find("form");
+    form.simulate("submit");
+    expect(app().exists('dl.ts-info')).toEqual(true)
+  });
 
 });
