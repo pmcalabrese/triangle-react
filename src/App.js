@@ -72,11 +72,12 @@ class App extends Component {
     })
   };
 
-  onSideChange(e, side) {
+  onSideChange = (e) => {
     const { value } = e.target;
+    const name = e.target.name;
     const parsedValue = parseFloat(value)
     const update_state = {}
-    update_state[`side_${side}_has_errors`] = (parsedValue <= 0) || isNaN(parsedValue);
+    update_state[`${name}_has_errors`] = (parsedValue <= 0) || isNaN(parsedValue);
     this.setState(update_state, this.formIsValid);
   }
 
@@ -90,15 +91,15 @@ class App extends Component {
           <fieldset>
             <label className={ side_a_has_errors ? "ts-error" : ""}>
               <span>Side A</span>
-              <input id="side_a" onBlur={ e => this.onSideChange(e, "a") } onChange={ e => this.onSideChange(e, "a") } ref={e => (this.a = e)} type="number" placeholder="type length of side A" />
+              <input name="side_a" onBlur={ this.onSideChange } onChange={ this.onSideChange } ref={e => (this.a = e)} type="number" placeholder="type length of side A" />
             </label>
             <label className={ side_b_has_errors ? "ts-error" : ""}>
               <span>Side B</span>
-              <input id="side_b" onBlur={ e => this.onSideChange(e, "b") } onChange={ e => this.onSideChange(e, "b") } ref={e => (this.b = e)} type="number" placeholder="type length of side B"/>
+              <input name="side_b" onBlur={ this.onSideChange } onChange={ this.onSideChange } ref={e => (this.b = e)} type="number" placeholder="type length of side B"/>
             </label>
             <label className={ side_c_has_errors ? "ts-error" : ""}>
               <span>Side C</span>
-              <input id="side_c" onBlur={ e => this.onSideChange(e, "c") } onChange={ e => this.onSideChange(e, "c") } ref={e => (this.c = e)} type="number" placeholder="type length of side C"/>
+              <input name="side_c" onBlur={ this.onSideChange } onChange={ this.onSideChange } ref={e => (this.c = e)} type="number" placeholder="type length of side C"/>
             </label>
             <button disabled={ !form_valid } data-ts="Button" className="ts-primary" type="submit">
               Evaluate
